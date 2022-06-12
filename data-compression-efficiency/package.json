@@ -1,0 +1,16 @@
+{
+  "name": "data-compression-efficiency",
+  "version": "0.0.0",
+  "description": "Compression efficiency comparison tool",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": {
+    "name": "Achilles Moraites",
+    "email": "achimoraites@yahoo.gr",
+    "url": "https://achimoraites.github.io/"
+  },
+  "license": "MIT",
+  "type": "module"
+}
