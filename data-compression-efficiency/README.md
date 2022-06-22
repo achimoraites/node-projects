@@ -6,7 +6,15 @@
 - The tool compresses and compares different compression algorithms.
 - Multiple files are supported.
 
-### Performance 
+### Usage
 
-Using a separate read (input) stream for each compression algorithm to ensure that the results are as reliable as possible.
+#### Single file
+```bash
+node ./index.js ./cool-picture.jpg
+```
+
+#### Multiple files
+```bash
+node ./index.js ./cool-picture.jpg ./cool-avatar.png ./cool-video.mp4
+```
 
