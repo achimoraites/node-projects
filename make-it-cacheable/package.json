@@ -1,0 +1,27 @@
+{
+  "name": "make-it-cacheable",
+  "version": "0.0.0",
+  "description": "Library agnostic caching",
+  "main": "lib/makeCacheable.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": {
+    "name": "Achilles Moraites",
+    "email": "achimoraites@yahoo.gr",
+    "url": "https://achimoraites.github.io/"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/achimoraites/node-projects.git",
+    "directory": "make-it-cacheable"
+  },
+  "type": "module",
+  "devDependencies": {
+    "axios": "^0.27.2"
+  }
+}
