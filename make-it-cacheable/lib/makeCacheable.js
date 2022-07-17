@@ -1,8 +1,8 @@
 import ProxyCache from "./ProxyCache.js";
 
-export default function makeCacheable(target, methods, ttl = 3000) {
+export default function makeCacheable(target, { debug, methods, ttl = 3000 }) {
   // cache
-  const cache = new ProxyCache(ttl);
+  const cache = new ProxyCache(ttl, debug);
   return new Proxy(target, {
     get: (target, property) => {
       if (methods.includes(property)) {
@@ -16,16 +16,10 @@ export default function makeCacheable(target, methods, ttl = 3000) {
           const cacheKey = getCacheKey(args, property);
 
           // Cached response
-          if (cache.has(cacheKey)) {
-            console.log("CACHED RESPONSE");
-            return Promise.resolve(cache.get(cacheKey));
-          }
+          if (cache.has(cacheKey)) return cachedResponse(cacheKey);
 
           // Non Cached response
-          return target[property](...args).then((v) => {
-            cache.set(cacheKey, v);
-            return v;
-          });
+          return nonCachedResponse(target[property], args, cacheKey);
         };
       }
 
@@ -35,5 +29,30 @@ export default function makeCacheable(target, methods, ttl = 3000) {
 
   function getCacheKey(args, method) {
     return method + args.join("");
+  }
+
+  function nonCachedResponse(method, args, cacheKey) {
+    const response = method(...args);
+    // is a thenable
+    if (response && typeof response.then === "function") {
+      return response.then((data) => {
+        cache.set(cacheKey, { type: "thenable", data });
+        return data;
+      });
+    }
+
+    cache.set(cacheKey, { type: "data", data: response });
+    return response;
+  }
+
+  function cachedResponse(cacheKey) {
+    if (debug) console.log("CACHED RESPONSE");
+
+    const { data, type } = cache.get(cacheKey);
+
+    // handle thenables
+    if (type === "thenable") return Promise.resolve(data);
+
+    return data;
   }
 }
