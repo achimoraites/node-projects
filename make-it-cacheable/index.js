@@ -1,5 +1,5 @@
 import axios from "axios";
-import makeCacheable from "./lib/makeCacheable.js";
+import makeCacheable from "./src/makeCacheable.js";
 
 // CUSTOM Function thenable demo
 (async () => {

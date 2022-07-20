@@ -10,13 +10,20 @@
 
 ### Usage
 
+#### ESM 
+`import makeCacheable from "make-it-cacheable"`
+#### CommonJS
+`const makeCacheable = require("make-it-cacheable");`
+
 #### With Axios
 
 ```javascript
 // Axios demo
+import makeCacheable from "make-it-cacheable";
+import axios from "axios"; // make sure to install axios before trying this demo
 (async () => {
   const methods = ["get"]; // select the methods that will be cached
-  const ttl = 10000; // set the cache TTL
+  const ttl = 10000; // set the cache TTL (in miliseconds)
   const debug = true; // optional
   const cachedAxios = makeCacheable(axios, { methods, ttl, debug });
   try {
@@ -38,6 +45,8 @@
 
 ```javascript
 // CUSTOM Function demo
+import makeCacheable from "make-it-cacheable";
+
 (async () => {
   const test = {
     getHello: (msg) => {

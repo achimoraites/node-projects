@@ -2,12 +2,18 @@
   "name": "make-it-cacheable",
   "version": "0.0.0",
   "description": "Library agnostic caching",
-  "main": "lib/makeCacheable.js",
-  "directories": {
-    "lib": "lib"
+  "module": "./dist/makeCacheable.js",
+  "main": "./dist/makeCacheable.cjs",
+  "exports": {
+    ".": {
+      "require": "./dist/makeCacheable.cjs",
+      "import": "./dist/makeCacheable.js"   
+    }
   },
   "scripts": {
-    "test": "ava"
+    "test": "ava",
+    "build": "rollup -c",
+    "prepublishOnly": "npm run build"
   },
   "author": {
     "name": "Achilles Moraites",
@@ -24,6 +30,7 @@
   "devDependencies": {
     "ava": "^4.3.1",
     "axios": "^0.27.2",
+    "rollup": "^2.77.0",
     "sinon": "^14.0.0"
   }
 }
