@@ -26,6 +26,15 @@
     "url": "git://github.com/achimoraites/node-projects.git",
     "directory": "make-it-cacheable"
   },
+  "keywords": [
+    "cacheable",
+    "caching",
+    "api",
+    "node",
+    "npm",
+    "make cachable",
+    "api cache"
+  ],
   "type": "module",
   "devDependencies": {
     "ava": "^4.3.1",
