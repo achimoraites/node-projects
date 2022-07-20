@@ -1,6 +1,6 @@
 import test from "ava";
 import sinon from "sinon";
-import makeCacheable from "../lib/makeCacheable.js";
+import makeCacheable from "../src/makeCacheable.js";
 
 let clock;
 
