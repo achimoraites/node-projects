@@ -8,14 +8,28 @@
 - The cache is invalidated using a custom TTL
 
 
-### Usage
+## Usage
 
-#### ESM 
+### ESM 
 `import makeCacheable from "make-it-cacheable"`
-#### CommonJS
+### CommonJS
 `const makeCacheable = require("make-it-cacheable");`
 
-#### With Axios
+### API
+**`makeCacheable(target, options)`**
+
+Returns a copy of the target object that the selected methods are cacheable.
+
+
+>* **`target`** (Obj) The object/instance to enhance
+>* **`options`** (Obj) Configuration
+>   * **`ttl`** (number) The time in milliseconds where a method's result remains cached
+>   * **`methods`** (Array<string>) The methods of the `target` that will be cacheable
+>   * **`debug`** (boolean) Prints verbose messages in console for debuging
+
+
+### Demos
+### With Axios
 
 ```javascript
 // Axios demo
@@ -23,7 +37,7 @@ import makeCacheable from "make-it-cacheable";
 import axios from "axios"; // make sure to install axios before trying this demo
 (async () => {
   const methods = ["get"]; // select the methods that will be cached
-  const ttl = 10000; // set the cache TTL (in miliseconds)
+  const ttl = 10000; // set the cache TTL (in milliseconds)
   const debug = true; // optional
   const cachedAxios = makeCacheable(axios, { methods, ttl, debug });
   try {
@@ -77,9 +91,9 @@ import makeCacheable from "make-it-cacheable";
 
   await Promise.all([
     cacheable.getHello("world"),
-    cacheable.getHello("beatiful world"),
+    cacheable.getHello("beautiful world"),
   ]);
-  console.log(await cacheable.getHello("beatiful world"));
+  console.log(await cacheable.getHello("beautiful world"));
   console.log(await cacheable.getHello("new world"));
   console.log(await cacheable.getHello("world"));
   console.log(await cacheable.getHello("world 2"));
