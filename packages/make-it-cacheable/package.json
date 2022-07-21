@@ -1,6 +1,6 @@
 {
   "name": "make-it-cacheable",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Library agnostic caching",
   "module": "./dist/makeCacheable.js",
   "main": "./dist/makeCacheable.cjs",
