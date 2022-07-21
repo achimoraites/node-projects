@@ -1,3 +1,7 @@
+src
+index.js
+rollup.config.js
+
 # exclude tests
 tests
 ava.config.js
